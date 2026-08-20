@@ -1,0 +1,108 @@
+---
+title: Layout with Flexbox and Grid
+summary: Two layout systems cover nearly every arrangement you will ever need. Here is how to pick between them.
+level: intermediate
+tags: ["web", "css", "layout"]
+updated: "2026-08-20"
+---
+
+For roughly fifteen years, laying out a web page meant fighting floats and table hacks. Flexbox and
+Grid replaced all of it. Learn these two and the old techniques stop being relevant.
+
+## The one question that decides it
+
+**Flexbox lays out along one axis. Grid lays out along two.**
+
+That is the whole heuristic. A row of buttons, a navigation bar, a card's stacked contents — one
+direction, so Flexbox. A page skeleton with a sidebar and a header, or a gallery aligned in both
+rows and columns — two directions, so Grid.
+
+## Flexbox in practice
+
+```css
+.toolbar {
+  display: flex;
+  align-items: center; /* cross axis: vertical here */
+  gap: 0.75rem;
+}
+
+.toolbar .spacer {
+  margin-left: auto; /* push everything after it to the right */
+}
+```
+
+The three properties you will use constantly:
+
+- `justify-content` — distributes space along the main axis.
+- `align-items` — aligns along the cross axis.
+- `gap` — spacing between items, without margin collapsing surprises.
+
+<Callout type="tip" title="margin-left: auto">
+Inside a flex row, `margin-left: auto` absorbs all remaining space. It is the cleanest way to push
+one item to the far end without a wrapper element.
+</Callout>
+
+## Grid in practice
+
+```css
+.page {
+  display: grid;
+  grid-template-columns: 16rem minmax(0, 1fr);
+  gap: 2rem;
+}
+```
+
+`minmax(0, 1fr)` deserves a note. A bare `1fr` track refuses to shrink below its content's minimum
+width, which is how long code blocks and unbroken URLs end up overflowing a grid. `minmax(0, 1fr)`
+allows the track to shrink, so the content scrolls inside it instead of blowing out the layout.
+
+### Responsive without media queries
+
+```css
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 1rem;
+}
+```
+
+This fits as many 14rem-or-wider columns as will fit and reflows on its own. No breakpoints to
+maintain.
+
+<Callout type="warning" title="Do not nest without reason">
+Deeply nested flex containers are the modern equivalent of nested tables. If you are three levels
+deep, a single grid on the parent is usually clearer.
+</Callout>
+
+## Logical properties
+
+Prefer `margin-inline`, `padding-block`, and `inset-inline-start` over their left/right equivalents.
+They follow the document's writing direction automatically, which matters the moment you add a
+right-to-left language.
+
+```css
+.card {
+  padding-inline: 1.25rem;
+  padding-block: 1rem;
+}
+```
+
+## Debugging layout
+
+Both Chrome and Firefox DevTools have dedicated Grid and Flexbox inspectors that overlay track
+lines and item numbers on the page. Turning that overlay on answers most "why is this here?"
+questions in seconds — far faster than adding temporary borders.
+
+<Quiz
+  question="You need a sidebar and a main column, with a header spanning both. Which do you reach for?"
+  choices={[
+    { text: "Grid, because the layout works in two dimensions.", correct: true, explanation: "Rows and columns both matter, which is exactly Grid's job." },
+    { text: "Flexbox, because it is simpler.", explanation: "You can force it with nested flex containers, but you would be describing a two-axis layout one axis at a time." },
+    { text: "Absolute positioning.", explanation: "It removes elements from flow and will not adapt to changing content height." },
+  ]}
+/>
+
+## Where to go next
+
+That completes the fundamentals track. From here, the natural next steps are forms and validation,
+or a framework that builds on this foundation.

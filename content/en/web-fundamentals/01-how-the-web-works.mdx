@@ -1,0 +1,93 @@
+---
+title: How the web actually works
+summary: Follow a single request from the moment you press Enter to the moment pixels appear on screen.
+level: basic
+tags: ["web", "http", "networking"]
+updated: "2026-08-20"
+---
+
+Most people use the web every day without ever seeing the machinery underneath. That machinery is
+simpler than it looks: a handful of well-defined steps repeated billions of times a second.
+
+## What happens when you press Enter
+
+Typing `example.com` into a browser kicks off a chain of four steps.
+
+1. **DNS lookup.** `example.com` is a name, not an address. Your computer asks a DNS resolver to
+   translate it into an IP address like `93.184.216.34`.
+2. **Connection.** Your browser opens a TCP connection to that address, then negotiates a TLS
+   handshake so the traffic is encrypted (that is the padlock and the `https`).
+3. **Request and response.** The browser sends an HTTP request. The server replies with a status
+   code, some headers, and a body — usually HTML.
+4. **Rendering.** The browser parses the HTML, fetches whatever it references (CSS, JavaScript,
+   images), and paints the result.
+
+<Callout type="note" title="It is all just text">
+An HTTP request is human-readable text. There is no magic binary format to learn before you can
+reason about what your browser is doing.
+</Callout>
+
+## Reading an HTTP exchange
+
+A minimal request looks like this:
+
+```http
+GET /about HTTP/1.1
+Host: example.com
+Accept: text/html
+```
+
+And a minimal response:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+
+<!doctype html>
+<h1>About us</h1>
+```
+
+The first line of the response carries the **status code**. You will meet these constantly:
+
+| Code | Meaning | When you see it |
+| --- | --- | --- |
+| 200 | OK | Everything worked |
+| 301 / 308 | Moved permanently | The URL changed for good |
+| 404 | Not found | The path does not exist |
+| 500 | Server error | The server crashed handling your request |
+
+## Client and server
+
+The **client** is the browser on your device. The **server** is a program running on a computer
+somewhere else, waiting for requests. Neither trusts the other by default, which is why almost every
+security rule on the web exists.
+
+A key consequence: anything sent to the client can be read and modified by the person using it.
+Never rely on the browser to enforce a rule that matters.
+
+<Callout type="warning" title="A common beginner mistake">
+Hiding a button with CSS does not stop anyone from calling the endpoint behind it. Access control
+belongs on the server.
+</Callout>
+
+## Static versus dynamic
+
+A **static** site sends the same pre-built file to everyone. It is fast, cheap, and hard to break.
+A **dynamic** site builds the response per request — personalised feeds, dashboards, anything
+logged-in.
+
+Most real sites are a blend: static shell, dynamic bits filled in where they are actually needed.
+
+<Quiz
+  question="A page loads but the browser shows a 404. What does that tell you?"
+  choices={[
+    { text: "The server was reached, but it has nothing at that path.", correct: true, explanation: "A status code means the server answered — the problem is the path, not the connection." },
+    { text: "The server is down.", explanation: "A down server usually gives a connection error or a 5xx, not a 404." },
+    { text: "DNS failed to resolve the domain.", explanation: "A DNS failure happens before any HTTP request, so you would never get a status code." },
+  ]}
+/>
+
+## Where to go next
+
+You now have the vocabulary for the rest of this track: request, response, status code, client,
+server. The next lesson puts that to work by writing the HTML that comes back in the body.

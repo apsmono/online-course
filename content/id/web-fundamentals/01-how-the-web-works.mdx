@@ -1,0 +1,94 @@
+---
+title: Cara kerja web sebenarnya
+summary: Ikuti satu permintaan dari saat kamu menekan Enter sampai piksel muncul di layar.
+level: basic
+tags: ["web", "http", "jaringan"]
+updated: "2026-08-20"
+---
+
+Kebanyakan orang memakai web setiap hari tanpa pernah melihat mesin di baliknya. Mesin itu jauh
+lebih sederhana daripada kelihatannya: beberapa langkah yang jelas, diulang miliaran kali per detik.
+
+## Apa yang terjadi saat kamu menekan Enter
+
+Mengetik `example.com` di browser memicu rangkaian empat langkah.
+
+1. **Pencarian DNS.** `example.com` adalah nama, bukan alamat. Komputermu meminta resolver DNS
+   menerjemahkannya menjadi alamat IP seperti `93.184.216.34`.
+2. **Koneksi.** Browser membuka koneksi TCP ke alamat itu, lalu melakukan handshake TLS supaya lalu
+   lintasnya terenkripsi (inilah arti gembok dan `https`).
+3. **Permintaan dan balasan.** Browser mengirim permintaan HTTP. Server membalas dengan kode status,
+   sejumlah header, dan sebuah body — biasanya HTML.
+4. **Rendering.** Browser membaca HTML-nya, mengambil semua yang dirujuk (CSS, JavaScript, gambar),
+   lalu menggambar hasilnya.
+
+<Callout type="note" title="Semuanya hanya teks">
+Permintaan HTTP bisa dibaca manusia. Tidak ada format biner rahasia yang harus dikuasai dulu sebelum
+kamu bisa menalar apa yang sedang dilakukan browser.
+</Callout>
+
+## Membaca satu pertukaran HTTP
+
+Permintaan paling sederhana terlihat seperti ini:
+
+```http
+GET /about HTTP/1.1
+Host: example.com
+Accept: text/html
+```
+
+Dan balasan paling sederhana:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+
+<!doctype html>
+<h1>Tentang kami</h1>
+```
+
+Baris pertama balasan membawa **kode status**. Kamu akan sering bertemu yang berikut ini:
+
+| Kode | Arti | Kapan muncul |
+| --- | --- | --- |
+| 200 | OK | Semuanya berhasil |
+| 301 / 308 | Pindah permanen | URL-nya berubah selamanya |
+| 404 | Tidak ditemukan | Path-nya tidak ada |
+| 500 | Galat server | Server gagal memproses permintaanmu |
+
+## Klien dan server
+
+**Klien** adalah browser di perangkatmu. **Server** adalah program yang berjalan di komputer lain,
+menunggu permintaan. Keduanya tidak saling percaya secara bawaan, dan dari situlah hampir semua
+aturan keamanan di web berasal.
+
+Konsekuensinya penting: apa pun yang dikirim ke klien bisa dibaca dan diubah oleh penggunanya.
+Jangan pernah mengandalkan browser untuk menegakkan aturan yang benar-benar penting.
+
+<Callout type="warning" title="Kesalahan pemula yang umum">
+Menyembunyikan tombol dengan CSS tidak menghentikan siapa pun memanggil endpoint di baliknya.
+Kontrol akses adalah tanggung jawab server.
+</Callout>
+
+## Statis versus dinamis
+
+Situs **statis** mengirim berkas siap pakai yang sama untuk semua orang. Cepat, murah, dan sulit
+rusak. Situs **dinamis** menyusun balasan per permintaan — feed personal, dasbor, apa pun yang perlu
+login.
+
+Kebanyakan situs nyata adalah campuran: kerangka statis, bagian dinamis hanya di tempat yang memang
+membutuhkannya.
+
+<Quiz
+  question="Sebuah halaman dimuat tapi browser menampilkan 404. Apa artinya?"
+  choices={[
+    { text: "Server berhasil dihubungi, tapi tidak ada apa pun di path tersebut.", correct: true, explanation: "Adanya kode status berarti server menjawab — masalahnya di path, bukan di koneksi." },
+    { text: "Servernya mati.", explanation: "Server yang mati biasanya memberi galat koneksi atau 5xx, bukan 404." },
+    { text: "DNS gagal menerjemahkan domainnya.", explanation: "Kegagalan DNS terjadi sebelum permintaan HTTP dikirim, jadi kamu tidak akan menerima kode status apa pun." },
+  ]}
+/>
+
+## Lanjut ke mana
+
+Sekarang kamu punya kosakata untuk sisa jalur ini: permintaan, balasan, kode status, klien, server.
+Pelajaran berikutnya mempraktikkannya dengan menulis HTML yang dikirim di dalam body.

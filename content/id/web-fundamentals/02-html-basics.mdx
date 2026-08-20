@@ -1,0 +1,101 @@
+---
+title: HTML yang punya makna
+summary: Menulis markup yang menjelaskan struktur, bukan tampilan — dan mendapat aksesibilitas serta SEO nyaris gratis.
+level: basic
+tags: ["web", "html", "aksesibilitas"]
+updated: "2026-08-20"
+---
+
+HTML bukan bahasa untuk mengatur tampilan. HTML adalah bahasa untuk menyatakan setiap bagian halaman
+itu *apa*. Kalau bagian ini benar, browser, pembaca layar, dan mesin pencari akan bekerja untukmu.
+
+## Bentuk sebuah dokumen
+
+```html
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Catatan tentang roti</title>
+  </head>
+  <body>
+    <h1>Catatan tentang roti</h1>
+    <p>Tepung, air, garam, waktu.</p>
+  </body>
+</html>
+```
+
+Tiga detail di potongan itu lebih penting daripada kelihatannya:
+
+- `lang="id"` memberi tahu pembaca layar aturan pelafalan mana yang dipakai.
+- Meta tag `viewport` yang membuat halaman nyaman dipakai di ponsel.
+- `<title>` adalah label tab, nama bookmark, sekaligus tautan biru di hasil pencarian.
+
+## Elemen semantik
+
+Setiap elemen membawa makna. Memilih elemen yang tepat adalah kebiasaan dengan dampak terbesar dalam
+pekerjaan front-end.
+
+```html
+<article>
+  <header>
+    <h1>Biang sourdough</h1>
+    <time datetime="2026-08-20">20 Agustus 2026</time>
+  </header>
+  <p>Beri makan sekali sehari.</p>
+  <footer>Diarsipkan di baking</footer>
+</article>
+```
+
+Bandingkan dengan halaman yang seluruhnya dibangun dari `<div>`. Secara visual bisa identik. Tapi
+hanya versi pertama yang bisa dijelajahi per judul, diringkas mesin pencari, atau dibacakan dengan
+masuk akal oleh pembaca layar.
+
+<Callout type="tip" title="Aturan praktis">
+Kalau ada elemen dengan nama yang tepat, pakai itu. Gunakan `<div>` dan `<span>` hanya kalau tidak
+ada yang lebih spesifik.
+</Callout>
+
+## Heading itu kerangka, bukan ukuran huruf
+
+Heading harus menurun tanpa melompat: `<h1>` boleh diikuti `<h2>`, dan `<h2>` diikuti `<h3>`. Jangan
+memilih `<h4>` hanya karena tampilannya kecil — atur ukurannya lewat CSS.
+
+Pengguna pembaca layar terbiasa melompat antar-heading untuk memindai halaman. Urutan heading yang
+kacau membuat itu mustahil.
+
+## Tautan dan tombol itu berbeda
+
+Ini layak dihafal:
+
+- **Tautan** (`<a href>`) memindahkan pengguna ke suatu tempat.
+- **Tombol** (`<button>`) melakukan aksi di halaman yang sedang dibuka.
+
+Keduanya bisa difokus lewat keyboard dan mengumumkan dirinya dengan benar — tapi hanya kalau kamu
+memakai elemen aslinya. `<div onclick>` tidak melakukan keduanya.
+
+## Gambar perlu teks alternatif
+
+```html
+<img src="/roti.jpg" alt="Roti sourdough berkulit gelap di atas rak kawat" />
+```
+
+Tulis `alt` yang menjelaskan apa yang disampaikan gambar itu dalam konteksnya. Kalau gambarnya murni
+hiasan, pakai `alt=""` supaya teknologi bantu melewatinya — menghilangkan atributnya sama sekali
+bukan hal yang sama.
+
+<Quiz
+  question="Mana yang seharusnya memakai <button>, bukan <a href>?"
+  multiple
+  choices={[
+    { text: "'Tambah ke keranjang', yang memperbarui keranjang tanpa berpindah halaman.", correct: true, explanation: "Ini melakukan aksi di halaman yang sedang dibuka." },
+    { text: "'Lihat lebih banyak', yang membuka bagian yang tersembunyi.", correct: true, explanation: "Juga aksi di dalam halaman." },
+    { text: "'Baca artikel lengkap', yang membuka halaman lain.", explanation: "Ini berpindah halaman, jadi tautan." },
+  ]}
+/>
+
+## Lanjut ke mana
+
+Setelah strukturnya rapi, pelajaran berikutnya membahas penataannya — dan kenapa CSS modern membuat
+sebagian besar trik layout lama tidak lagi diperlukan.

@@ -1,0 +1,109 @@
+---
+title: Menata layout dengan Flexbox dan Grid
+summary: Dua sistem layout ini mencakup hampir semua susunan yang akan kamu butuhkan. Begini cara memilih di antara keduanya.
+level: intermediate
+tags: ["web", "css", "layout"]
+updated: "2026-08-20"
+---
+
+Selama kira-kira lima belas tahun, menata halaman web berarti bergulat dengan float dan trik tabel.
+Flexbox dan Grid menggantikan semuanya. Kuasai dua ini dan teknik lama itu berhenti jadi relevan.
+
+## Satu pertanyaan yang menentukan
+
+**Flexbox menata pada satu sumbu. Grid menata pada dua sumbu.**
+
+Itu saja patokannya. Sebaris tombol, bilah navigasi, isi kartu yang bertumpuk — satu arah, jadi
+Flexbox. Kerangka halaman dengan sidebar dan header, atau galeri yang rapi baik per baris maupun per
+kolom — dua arah, jadi Grid.
+
+## Flexbox dalam praktik
+
+```css
+.toolbar {
+  display: flex;
+  align-items: center; /* sumbu silang: vertikal di sini */
+  gap: 0.75rem;
+}
+
+.toolbar .spacer {
+  margin-left: auto; /* dorong semua setelahnya ke kanan */
+}
+```
+
+Tiga properti yang akan terus kamu pakai:
+
+- `justify-content` — membagi ruang di sepanjang sumbu utama.
+- `align-items` — meratakan pada sumbu silang.
+- `gap` — jarak antar item, tanpa kejutan margin collapsing.
+
+<Callout type="tip" title="margin-left: auto">
+Di dalam baris flex, `margin-left: auto` menyerap semua sisa ruang. Ini cara paling bersih mendorong
+satu item ke ujung tanpa elemen pembungkus tambahan.
+</Callout>
+
+## Grid dalam praktik
+
+```css
+.page {
+  display: grid;
+  grid-template-columns: 16rem minmax(0, 1fr);
+  gap: 2rem;
+}
+```
+
+`minmax(0, 1fr)` perlu catatan. Track `1fr` polos menolak menyusut di bawah lebar minimum isinya —
+itulah sebabnya blok kode panjang dan URL tanpa spasi sering meluber keluar grid. `minmax(0, 1fr)`
+mengizinkan track menyusut, sehingga isinya yang bergulir, bukan layout-nya yang jebol.
+
+### Responsif tanpa media query
+
+```css
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 1rem;
+}
+```
+
+Ini memuat sebanyak mungkin kolom selebar 14rem atau lebih, lalu menata ulang sendiri. Tidak ada
+breakpoint yang perlu dirawat.
+
+<Callout type="warning" title="Jangan bersarang tanpa alasan">
+Kontainer flex yang bersarang dalam-dalam adalah versi modern dari tabel bersarang. Kalau sudah tiga
+tingkat, satu grid di elemen induk biasanya lebih jelas.
+</Callout>
+
+## Properti logis
+
+Lebih baik pakai `margin-inline`, `padding-block`, dan `inset-inline-start` daripada padanan
+kiri/kanannya. Properti ini mengikuti arah tulisan dokumen secara otomatis, dan itu langsung terasa
+begitu kamu menambahkan bahasa yang ditulis dari kanan ke kiri.
+
+```css
+.card {
+  padding-inline: 1.25rem;
+  padding-block: 1rem;
+}
+```
+
+## Men-debug layout
+
+DevTools Chrome maupun Firefox punya inspektur khusus Grid dan Flexbox yang menampilkan garis track
+dan nomor item langsung di atas halaman. Menyalakan overlay itu menjawab sebagian besar pertanyaan
+"kenapa ini ada di sini?" dalam hitungan detik — jauh lebih cepat daripada menambahkan border
+sementara.
+
+<Quiz
+  question="Kamu butuh sidebar dan kolom utama, dengan header yang membentang di atas keduanya. Pakai apa?"
+  choices={[
+    { text: "Grid, karena layout-nya bekerja dalam dua dimensi.", correct: true, explanation: "Baris dan kolom sama-sama penting, dan itu persis tugas Grid." },
+    { text: "Flexbox, karena lebih sederhana.", explanation: "Bisa dipaksakan dengan flex bersarang, tapi kamu akan menjelaskan layout dua sumbu satu sumbu per kali." },
+    { text: "Absolute positioning.", explanation: "Cara ini mengeluarkan elemen dari alur dan tidak menyesuaikan diri saat tinggi konten berubah." },
+  ]}
+/>
+
+## Lanjut ke mana
+
+Jalur dasar ini selesai. Dari sini, langkah alami berikutnya adalah form dan validasi, atau sebuah
+framework yang dibangun di atas fondasi ini.

@@ -1,0 +1,101 @@
+---
+title: HTML that means something
+summary: Write markup that describes structure rather than appearance — and get accessibility and SEO almost for free.
+level: basic
+tags: ["web", "html", "accessibility"]
+updated: "2026-08-20"
+---
+
+HTML is not a formatting language. It is a language for saying what each piece of a page *is*. Get
+that right and browsers, screen readers, and search engines all do useful work on your behalf.
+
+## The shape of a document
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Notes on bread</title>
+  </head>
+  <body>
+    <h1>Notes on bread</h1>
+    <p>Flour, water, salt, time.</p>
+  </body>
+</html>
+```
+
+Three details in that snippet matter more than they look:
+
+- `lang="en"` tells screen readers which pronunciation rules to use.
+- The `viewport` meta tag is what makes a page usable on a phone.
+- `<title>` is the tab label, the bookmark name, and the blue link in search results.
+
+## Semantic elements
+
+Every element carries meaning. Choosing the right one is the single highest-leverage habit in
+front-end work.
+
+```html
+<article>
+  <header>
+    <h1>Sourdough starter</h1>
+    <time datetime="2026-08-20">20 August 2026</time>
+  </header>
+  <p>Feed it once a day.</p>
+  <footer>Filed under baking</footer>
+</article>
+```
+
+Compare that with a page built entirely from `<div>`. Visually they can look identical. But only the
+first version can be navigated by heading, summarised by a search engine, or read sensibly by a
+screen reader.
+
+<Callout type="tip" title="A rule of thumb">
+If an element with the right name exists, use it. Reach for `<div>` and `<span>` only when nothing
+more specific applies.
+</Callout>
+
+## Headings are an outline, not a font size
+
+Headings must descend without skipping: an `<h1>` may be followed by `<h2>`, and an `<h2>` by
+`<h3>`. Do not pick `<h4>` because it happens to render small — set the size in CSS instead.
+
+Screen reader users routinely jump between headings to skim a page. A broken heading order makes
+that impossible.
+
+## Links and buttons are different
+
+This is worth memorising:
+
+- A **link** (`<a href>`) navigates somewhere.
+- A **button** (`<button>`) performs an action on the current page.
+
+Both are keyboard-focusable and announce themselves correctly — but only when you use the real
+element. A `<div onclick>` does neither.
+
+## Images need alternative text
+
+```html
+<img src="/loaf.jpg" alt="A dark, well-scored sourdough loaf on a wire rack" />
+```
+
+Write `alt` describing what the image communicates in context. If the image is purely decorative,
+use `alt=""` so assistive technology skips it — omitting the attribute entirely is not the same
+thing.
+
+<Quiz
+  question="Which of these should be a <button> rather than an <a href>?"
+  multiple
+  choices={[
+    { text: "'Add to cart', which updates the cart without leaving the page.", correct: true, explanation: "It performs an action on the current page." },
+    { text: "'Show more', which expands a collapsed section.", correct: true, explanation: "Also an in-page action." },
+    { text: "'Read the full article', which opens another page.", explanation: "This navigates, so it is a link." },
+  ]}
+/>
+
+## Where to go next
+
+With structure in place, the next lesson covers laying it out — and why modern CSS makes most of the
+old layout tricks unnecessary.
