@@ -2,5 +2,10 @@
   "title": "Web Fundamentals",
   "description": "How the web actually works, from typing a URL to styling a page. Start here if you have never built anything for the browser.",
   "level": "basic",
-  "order": 1
+  "order": 1,
+  "lessons": [
+    "how-the-web-works",
+    "html-basics",
+    "css-layout"
+  ]
 }

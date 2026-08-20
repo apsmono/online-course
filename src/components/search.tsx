@@ -38,10 +38,10 @@ export function Search({ locale }: { locale: Locale }) {
   const index = useMemo(() => {
     if (!docs) return null;
     const engine = new MiniSearch<SearchDoc>({
-      fields: ["title", "summary", "text", "tags", "trackTitle"],
-      storeFields: ["title", "summary", "href", "trackTitle", "level", "tags"],
+      fields: ["title", "summary", "text", "tagLabels", "moduleTitles"],
+      storeFields: ["title", "summary", "href", "moduleTitles", "level", "tags"],
       searchOptions: {
-        boost: { title: 4, summary: 2, tags: 2 },
+        boost: { title: 4, summary: 2, tagLabels: 2 },
         prefix: true,
         fuzzy: 0.2,
       },
@@ -100,7 +100,7 @@ export function Search({ locale }: { locale: Locale }) {
                     <LevelBadge level={hit.level} locale={locale} />
                   </span>
                   <span className="mt-1 block text-sm" style={{ color: "var(--fg-muted)" }}>
-                    {hit.trackTitle}
+                    {hit.moduleTitles}
                     {hit.summary ? ` — ${hit.summary}` : ""}
                   </span>
                 </Link>

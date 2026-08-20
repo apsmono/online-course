@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { LessonMeta } from "@/lib/content";
+import { type LessonMeta, tagLabel } from "@/lib/content";
 import { type Locale, t } from "@/lib/i18n";
 import { LevelBadge } from "./level-badge";
 
@@ -39,13 +39,18 @@ export function LessonCard({
             <LevelBadge level={lesson.level} locale={locale} />
           </span>
           {lesson.summary ? (
-            <span className="mt-1 block text-sm leading-relaxed" style={{ color: "var(--fg-muted)" }}>
+            <span
+              className="mt-1 block text-sm leading-relaxed"
+              style={{ color: "var(--fg-muted)" }}
+            >
               {lesson.summary}
             </span>
           ) : null}
           <span className="mt-2 block text-xs" style={{ color: "var(--fg-muted)" }}>
             {lesson.minutes} {copy.minRead}
-            {lesson.tags.length ? ` · ${lesson.tags.join(", ")}` : ""}
+            {lesson.tags.length
+              ? ` · ${lesson.tags.map((key) => tagLabel(locale, key)).join(", ")}`
+              : ""}
           </span>
         </span>
       </Link>

@@ -1,0 +1,19 @@
+{
+  "title": "Mathematics",
+  "description": "School mathematics rebuilt for adults who want to actually use it: arithmetic you can trust, algebra that explains itself, and the ideas underneath both.",
+  "level": "basic",
+  "order": 3,
+  "lessons": ["percentages-and-proportions"],
+  "plannedLessons": [
+    { "slug": "order-of-operations", "title": "Order of operations and why it is a convention", "level": "basic" },
+    { "slug": "fractions-and-decimals", "title": "Fractions, decimals, and moving between them", "level": "basic" },
+    { "slug": "algebra-basics", "title": "Variables and solving your first equations", "level": "basic" },
+    { "slug": "linear-equations", "title": "Lines, slope, and systems of equations", "level": "intermediate" },
+    { "slug": "functions-and-graphs", "title": "Functions and reading a graph", "level": "intermediate" },
+    { "slug": "exponents-and-logarithms", "title": "Exponents, logarithms, and growth", "level": "intermediate" },
+    { "slug": "sequences-and-series", "title": "Sequences, series, and compounding", "level": "intermediate" },
+    { "slug": "introduction-to-proof", "title": "What a proof is and how to read one", "level": "advanced" },
+    { "slug": "limits-and-derivatives", "title": "Limits and derivatives without the hand-waving", "level": "advanced" },
+    { "slug": "matrices-and-vectors", "title": "Matrices and vectors as a language for data", "level": "advanced" }
+  ]
+}

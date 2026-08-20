@@ -2,5 +2,10 @@
   "title": "Dasar-Dasar Web",
   "description": "Cara kerja web dari mengetik URL sampai menata tampilan halaman. Mulai dari sini kalau kamu belum pernah membuat apa pun untuk browser.",
   "level": "basic",
-  "order": 1
+  "order": 1,
+  "lessons": [
+    "how-the-web-works",
+    "html-basics",
+    "css-layout"
+  ]
 }

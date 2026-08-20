@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode, { type Options as PrettyCodeOptions } from "rehype-pretty-code";
@@ -52,9 +54,11 @@ export function MdxContent({ source, locale }: { source: string; locale: Locale 
         blockJS: false,
         blockDangerousJS: true,
         mdxOptions: {
-          remarkPlugins: [remarkGfm],
+          remarkPlugins: [remarkGfm, remarkMath],
           rehypePlugins: [
             rehypeSlug,
+            // KaTeX runs before pretty-code so math is never treated as source.
+            [rehypeKatex, { strict: false, throwOnError: false, output: "html" }],
             [rehypePrettyCode, prettyCodeOptions],
             [
               rehypeAutolinkHeadings,

@@ -1,0 +1,135 @@
+---
+title: Describing data — centre and spread
+summary: Mean, median, and standard deviation in plain language, plus the situations where each one quietly misleads you.
+level: basic
+tags: ["statistics", "descriptive-statistics", "data-literacy"]
+primaryModule: statistics
+updated: "2026-08-20"
+---
+
+Given a list of numbers, two questions cover most of what anyone wants to know: **where is the
+middle**, and **how spread out is it**. Every summary statistic is an answer to one of those two.
+
+## Measures of centre
+
+### Mean
+
+The arithmetic average — add everything, divide by how many:
+
+$$
+\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
+$$
+
+The mean uses every value, which is its strength and its weakness. One extreme value drags it.
+
+### Median
+
+Sort the values and take the middle one (or the average of the two middle ones for an even count).
+The median only cares about *order*, so a single enormous value moves it barely at all.
+
+### Mode
+
+The most frequent value. Mostly useful for categories — "the most common answer was *sometimes*" —
+rather than for continuous measurements.
+
+<Callout type="note" title="A worked example">
+Monthly salaries in a nine-person team, in millions of rupiah: 7, 8, 8, 9, 10, 11, 12, 14, 95.
+
+Mean = 19.3. Median = 10. Mode = 8.
+
+The mean describes nobody in the room. Eight of nine people earn less than half of it.
+</Callout>
+
+### Picking one
+
+| Situation | Use |
+| --- | --- |
+| Roughly symmetric data, no outliers | Mean |
+| Skewed data — income, house prices, waiting times | Median |
+| Categories, not numbers | Mode |
+
+<Callout type="warning" title="Watch for 'average'">
+The word "average" in a headline almost always means the mean, and is used most often exactly where
+the median would be more honest. Income statistics are the classic case.
+</Callout>
+
+## Measures of spread
+
+Two datasets can share a mean and be nothing alike. Spread is what distinguishes them.
+
+### Range and interquartile range
+
+**Range** is $\max - \min$. It is easy and almost useless — it depends entirely on the two most
+extreme observations.
+
+The **interquartile range (IQR)** is the range of the middle half: $Q_3 - Q_1$, where $Q_1$ and
+$Q_3$ are the 25th and 75th percentiles. It is the natural partner to the median.
+
+### Variance and standard deviation
+
+Variance is the mean squared distance from the mean:
+
+$$
+s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2
+$$
+
+Standard deviation is its square root, $s = \sqrt{s^2}$, which puts the number back into the
+original units — rupiah, centimetres, minutes.
+
+<Callout type="note" title="Why n − 1 and not n">
+Dividing by $n-1$ (Bessel's correction) compensates for the fact that you estimated the mean from
+the same data. Using $n$ systematically underestimates the spread of the population the sample came
+from. Software defaults to $n-1$; that is usually what you want.
+</Callout>
+
+Read standard deviation as "the typical distance from average". For roughly bell-shaped data:
+
+| Within | Contains about |
+| --- | --- |
+| $\bar{x} \pm 1s$ | 68% of values |
+| $\bar{x} \pm 2s$ | 95% of values |
+| $\bar{x} \pm 3s$ | 99.7% of values |
+
+That rule only holds for bell-shaped distributions. Applied to skewed data it will mislead you
+badly.
+
+## Shape
+
+Centre and spread assume the shape is unremarkable. Check that assumption before trusting either.
+
+- **Skew.** A long tail on the right (income, city populations) pulls the mean above the median. A
+  long left tail does the reverse.
+- **Bimodality.** Two peaks usually mean two populations mixed together. Summarising them with one
+  mean describes neither. Split the data and summarise each.
+- **Outliers.** Investigate before deleting. An outlier is sometimes a data-entry error and
+  sometimes the most important observation in the set.
+
+<Callout type="tip" title="Always plot it first">
+A histogram takes seconds and reveals skew, bimodality, and outliers immediately — all things a table
+of summary statistics hides by construction.
+</Callout>
+
+<Quiz
+  question="House prices in a district have a mean of 2.1 billion and a median of 900 million. What does that tell you?"
+  choices={[
+    { text: "The distribution is right-skewed — a few very expensive houses pull the mean up.", correct: true, explanation: "Mean far above median is the signature of a long right tail." },
+    { text: "There is an error in the data.", explanation: "Nothing here is contradictory. Price data is skewed by nature." },
+    { text: "Half of all houses cost more than 2.1 billion.", explanation: "That would describe the median, not the mean. Half cost more than 900 million." },
+  ]}
+/>
+
+<Quiz
+  question="Which summaries are robust to a single extreme outlier?"
+  multiple
+  choices={[
+    { text: "Median", correct: true, explanation: "It depends on position in the sorted order, not on magnitude." },
+    { text: "Interquartile range", correct: true, explanation: "It is computed from the middle half, so the tails cannot move it." },
+    { text: "Mean", explanation: "Every value contributes, so one extreme value shifts it." },
+    { text: "Standard deviation", explanation: "Squaring distances makes it even more sensitive to outliers than the mean." },
+  ]}
+/>
+
+## Where to go next
+
+Descriptive statistics summarise the data you have. The next step is inference: what the data you
+have can tell you about the data you do not.

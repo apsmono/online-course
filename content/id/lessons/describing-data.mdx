@@ -1,0 +1,139 @@
+---
+title: Menggambarkan data — pemusatan dan sebaran
+summary: Rata-rata, median, dan simpangan baku dalam bahasa sederhana, plus situasi ketika masing-masing diam-diam menyesatkan.
+level: basic
+tags: ["statistics", "descriptive-statistics", "data-literacy"]
+primaryModule: statistics
+updated: "2026-08-20"
+---
+
+Diberi sederet angka, dua pertanyaan mencakup hampir semua yang ingin diketahui orang: **di mana
+tengahnya**, dan **seberapa menyebar**. Setiap ukuran ringkasan adalah jawaban atas salah satu dari
+keduanya.
+
+## Ukuran pemusatan
+
+### Rata-rata (mean)
+
+Rata-rata hitung — jumlahkan semuanya, bagi dengan banyaknya:
+
+$$
+\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i
+$$
+
+Rata-rata memakai setiap nilai, dan itulah kekuatan sekaligus kelemahannya. Satu nilai ekstrem
+menariknya.
+
+### Median
+
+Urutkan nilainya lalu ambil yang tengah (atau rata-rata dua nilai tengah kalau jumlahnya genap).
+Median hanya peduli pada *urutan*, jadi satu nilai raksasa nyaris tidak menggesernya.
+
+### Modus
+
+Nilai yang paling sering muncul. Umumnya berguna untuk kategori — "jawaban terbanyak adalah
+*kadang-kadang*" — bukan untuk pengukuran kontinu.
+
+<Callout type="note" title="Contoh nyata">
+Gaji bulanan sembilan orang dalam satu tim, dalam juta rupiah: 7, 8, 8, 9, 10, 11, 12, 14, 95.
+
+Rata-rata = 19,3. Median = 10. Modus = 8.
+
+Rata-rata itu tidak menggambarkan siapa pun di ruangan tersebut. Delapan dari sembilan orang
+berpenghasilan kurang dari separuhnya.
+</Callout>
+
+### Memilih yang mana
+
+| Situasi | Pakai |
+| --- | --- |
+| Data kurang lebih simetris, tanpa pencilan | Rata-rata |
+| Data miring — pendapatan, harga rumah, waktu tunggu | Median |
+| Kategori, bukan angka | Modus |
+
+<Callout type="warning" title="Hati-hati dengan kata 'rata-rata'">
+Kata "rata-rata" di judul berita hampir selalu berarti mean, dan paling sering dipakai justru di
+tempat median akan lebih jujur. Statistik pendapatan adalah contoh klasiknya.
+</Callout>
+
+## Ukuran sebaran
+
+Dua kumpulan data bisa punya rata-rata sama tapi sama sekali berbeda. Sebaranlah yang membedakannya.
+
+### Jangkauan dan jangkauan antar-kuartil
+
+**Jangkauan** adalah $\max - \min$. Mudah dihitung dan nyaris tidak berguna — nilainya sepenuhnya
+bergantung pada dua pengamatan paling ekstrem.
+
+**Jangkauan antar-kuartil (IQR)** adalah rentang separuh bagian tengah: $Q_3 - Q_1$, dengan $Q_1$ dan
+$Q_3$ adalah persentil ke-25 dan ke-75. Ini pasangan alami median.
+
+### Ragam dan simpangan baku
+
+Ragam adalah rata-rata kuadrat jarak dari mean:
+
+$$
+s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2
+$$
+
+Simpangan baku adalah akarnya, $s = \sqrt{s^2}$, yang mengembalikan angkanya ke satuan asli — rupiah,
+sentimeter, menit.
+
+<Callout type="note" title="Kenapa n − 1, bukan n">
+Membagi dengan $n-1$ (koreksi Bessel) mengompensasi kenyataan bahwa kamu menaksir mean dari data yang
+sama. Memakai $n$ secara sistematis meremehkan sebaran populasi asal sampel itu. Perangkat lunak
+memakai $n-1$ sebagai bawaan; biasanya itu yang kamu inginkan.
+</Callout>
+
+Baca simpangan baku sebagai "jarak khas dari rata-rata". Untuk data yang kira-kira berbentuk lonceng:
+
+| Dalam rentang | Memuat sekitar |
+| --- | --- |
+| $\bar{x} \pm 1s$ | 68% nilai |
+| $\bar{x} \pm 2s$ | 95% nilai |
+| $\bar{x} \pm 3s$ | 99,7% nilai |
+
+Kaidah itu hanya berlaku untuk distribusi berbentuk lonceng. Diterapkan pada data yang miring, ia
+akan menyesatkanmu jauh.
+
+## Bentuk
+
+Pemusatan dan sebaran mengandaikan bentuknya biasa saja. Periksa andaian itu sebelum memercayai
+keduanya.
+
+- **Kemiringan.** Ekor panjang di kanan (pendapatan, populasi kota) menarik mean ke atas median. Ekor
+  panjang di kiri melakukan sebaliknya.
+- **Dua puncak.** Dua puncak biasanya berarti dua populasi yang tercampur. Meringkasnya dengan satu
+  mean tidak menggambarkan keduanya. Pisahkan datanya lalu ringkas masing-masing.
+- **Pencilan.** Selidiki sebelum menghapus. Pencilan kadang salah ketik, kadang justru pengamatan
+  terpenting dalam kumpulan itu.
+
+<Callout type="tip" title="Gambarkan dulu">
+Histogram butuh beberapa detik dan langsung memperlihatkan kemiringan, dua puncak, dan pencilan —
+semua hal yang justru disembunyikan oleh tabel ringkasan.
+</Callout>
+
+<Quiz
+  question="Harga rumah di sebuah kecamatan punya rata-rata 2,1 miliar dan median 900 juta. Apa artinya?"
+  choices={[
+    { text: "Distribusinya miring ke kanan — beberapa rumah sangat mahal menarik rata-rata ke atas.", correct: true, explanation: "Mean jauh di atas median adalah ciri khas ekor panjang di kanan." },
+    { text: "Ada kesalahan dalam datanya.", explanation: "Tidak ada yang bertentangan di sini. Data harga memang miring secara alami." },
+    { text: "Separuh rumah harganya di atas 2,1 miliar.", explanation: "Itu menggambarkan median, bukan mean. Separuhnya di atas 900 juta." },
+  ]}
+/>
+
+<Quiz
+  question="Ringkasan mana yang tahan terhadap satu pencilan ekstrem?"
+  multiple
+  choices={[
+    { text: "Median", correct: true, explanation: "Bergantung pada posisi dalam urutan, bukan pada besarnya nilai." },
+    { text: "Jangkauan antar-kuartil", correct: true, explanation: "Dihitung dari separuh bagian tengah, jadi ekornya tidak bisa menggesernya." },
+    { text: "Rata-rata", explanation: "Setiap nilai ikut berkontribusi, jadi satu nilai ekstrem menggesernya." },
+    { text: "Simpangan baku", explanation: "Mengkuadratkan jarak membuatnya lebih peka terhadap pencilan daripada mean." },
+  ]}
+/>
+
+## Lanjut ke mana
+
+Statistika deskriptif meringkas data yang kamu punya. Langkah berikutnya adalah inferensi: apa yang
+bisa dikatakan data yang kamu punya tentang data yang tidak kamu punya.

@@ -278,6 +278,23 @@
     opacity: 1;
   }
 
+  /* Nested blocks (callouts, list items) need their own vertical rhythm because
+     the top-level rule only targets direct children of .prose. */
+  .prose .callout-body > * + * {
+    margin-top: 0.9em;
+  }
+
+  .prose .callout-body > *:first-child {
+    margin-top: 0;
+  }
+
+  /* Display math should breathe and scroll rather than overflow on narrow screens. */
+  .prose .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-block: 0.35rem;
+  }
+
   /* Interactive components embedded in MDX opt out of the reading styles. */
   .prose .not-prose ul,
   .prose .not-prose ol {

@@ -1,0 +1,10 @@
+Summary in the imperative, under 72 characters, no full stop
+
+* what changed
+* what else changed
+
+# Add a trailer below ONLY if an AI agent did the work, e.g.
+# Co-Authored-By: Claude <noreply@anthropic.com>
+#
+# Structure: summary / blank / * bullets / blank / trailer
+# See docs/WORKFLOW.md. Lines starting with # are ignored.

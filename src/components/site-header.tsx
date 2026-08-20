@@ -5,7 +5,7 @@ import { LocaleSwitcher } from "./locale-switcher";
 export function SiteHeader({ locale }: { locale: Locale }) {
   const copy = t(locale);
   const nav = [
-    { href: `/${locale}/learn`, label: copy.tracks },
+    { href: `/${locale}/learn`, label: copy.modules },
     { href: `/${locale}/topics`, label: copy.topics },
     { href: `/${locale}/search`, label: copy.search },
   ];

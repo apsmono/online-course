@@ -1,0 +1,18 @@
+{
+  "title": "Statistika",
+  "description": "Cara meringkas data secara jujur, menalar tentang ketidakpastian, dan mengenali kapan sebuah angka di berita tidak berarti seperti yang tampak.",
+  "level": "intermediate",
+  "order": 4,
+  "lessons": ["describing-data", "percentages-and-proportions"],
+  "plannedLessons": [
+    { "slug": "what-statistics-is-for", "title": "Untuk apa sebenarnya statistika", "level": "basic" },
+    { "slug": "charts-that-do-not-lie", "title": "Grafik yang tidak berbohong", "level": "basic" },
+    { "slug": "probability-basics", "title": "Peluang dari dasar", "level": "intermediate" },
+    { "slug": "distributions", "title": "Distribusi dan kurva normal", "level": "intermediate" },
+    { "slug": "sampling-and-uncertainty", "title": "Sampel, galat, dan selang kepercayaan", "level": "intermediate" },
+    { "slug": "correlation-and-causation", "title": "Korelasi, sebab-akibat, dan perancu", "level": "intermediate" },
+    { "slug": "hypothesis-testing", "title": "Uji hipotesis dan apa yang bukan nilai-p", "level": "advanced" },
+    { "slug": "regression", "title": "Regresi sebagai model sebuah hubungan", "level": "advanced" },
+    { "slug": "bayesian-thinking", "title": "Berpikir Bayesian dan memperbarui keyakinan", "level": "advanced" }
+  ]
+}

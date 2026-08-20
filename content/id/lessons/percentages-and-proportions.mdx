@@ -1,0 +1,127 @@
+---
+title: Persentase dan proporsi
+summary: Persentase adalah bagian aritmetika yang paling sering dipakai sekaligus paling sering disalahgunakan di ruang publik. Ini cara menghitungnya dan cara membacanya dengan kritis.
+level: basic
+tags: ["mathematics", "arithmetic", "data-literacy"]
+primaryModule: mathematics
+updated: "2026-08-20"
+---
+
+Persentase adalah pecahan yang penyebutnya dipatok di 100. Itu saja definisinya. Hampir semua
+kekeliruan orang soal persentase berasal dari hilangnya jejak *apa penyebutnya tadi*.
+
+## Satu rumus saja
+
+$$
+\text{persentase} = \frac{\text{bagian}}{\text{keseluruhan}} \times 100\%
+$$
+
+Kalau 37 dari 200 responden survei menjawab ya, itu $\frac{37}{200} \times 100\% = 18{,}5\%$.
+
+Disusun ulang, hubungan yang sama menjawab dua pertanyaan lain yang akan pernah kamu ajukan:
+
+| Kamu tahu | Kamu cari | Hitung |
+| --- | --- | --- |
+| bagian, keseluruhan | persentase | $\dfrac{\text{bagian}}{\text{keseluruhan}} \times 100$ |
+| persentase, keseluruhan | bagian | $\dfrac{\text{persentase}}{100} \times \text{keseluruhan}$ |
+| bagian, persentase | keseluruhan | $\dfrac{\text{bagian}}{\text{persentase}} \times 100$ |
+
+<Callout type="tip" title="Persen berarti per seratus">
+Membaca "%" sebagai "per seratus" membuat sebagian besar soal menyelesaikan dirinya sendiri. "18,5
+per seratus responden" langsung memberi tahu apa penyebutnya.
+</Callout>
+
+## Perubahan persentase
+
+Perubahan diukur terhadap nilai **awal**:
+
+$$
+\text{perubahan persentase} = \frac{\text{baru} - \text{lama}}{\text{lama}} \times 100\%
+$$
+
+Harga yang naik dari 80.000 ke 92.000 berarti
+
+$$
+\frac{92.000 - 80.000}{80.000} \times 100\% = 15\%
+$$
+
+### Kenaikan dan penurunan tidak simetris
+
+Ini menjebak hampir semua orang. Naik 50%, lalu turun 50%, dan kamu **tidak** kembali ke titik awal:
+
+$$
+100 \xrightarrow{\;+50\%\;} 150 \xrightarrow{\;-50\%\;} 75
+$$
+
+Sebabnya, persentase kedua diambil dari keseluruhan yang berbeda. Untuk membatalkan kenaikan $p\%$
+kamu butuh penurunan sebesar $\frac{p}{100+p} \times 100\%$ — membatalkan $+50\%$ butuh $-33{,}3\%$.
+
+<Callout type="warning" title="Penurunan 100% sudah mentok">
+Sesuatu bisa naik 300%, tapi tidak pernah bisa turun lebih dari 100% — itu akan membawanya ke bawah
+nol. Kalau kamu membaca "biaya turun 150%", penulisnya keliru.
+</Callout>
+
+## Persen versus poin persentase
+
+Inilah pembedaan yang paling sering mengubah angka benar menjadi judul menyesatkan.
+
+Kalau dukungan terhadap sebuah kebijakan bergerak dari 40% ke 44%:
+
+- Dukungan naik **4 poin persentase** — selisih aritmetikanya.
+- Dukungan naik **10 persen** — perubahan relatifnya, $\frac{44-40}{40} \times 100\% = 10\%$.
+
+Keduanya benar. Siaran pers yang ingin angkanya terdengar besar akan melaporkan yang kedua; yang
+ingin terdengar kecil akan melaporkan yang pertama.
+
+<Callout type="note" title="Cara mengenalinya">
+Setiap kali sebuah persentase berubah *menjadi* persentase lain, tanyakan yang mana dari keduanya
+yang dikutip. Kalau artikelnya tidak menyebutkan, biasanya yang dipilih adalah yang menguntungkan.
+</Callout>
+
+## Proporsi dan rasio
+
+**Proporsi** adalah gagasan yang sama tanpa ×100: $\frac{37}{200} = 0{,}185$. Statistika umumnya
+lebih suka proporsi karena mudah dikalikan satu sama lain.
+
+**Rasio** membandingkan dua bagian satu sama lain, bukan bagian terhadap keseluruhan. Dari 200 orang,
+37 menjawab ya dan 163 menjawab tidak — rasionya $37 : 163$, kira-kira $1 : 4{,}4$.
+
+Mencampuradukkan keduanya menghasilkan kekeliruan yang khas: "1 dari 5 menjawab ya" (proporsi,
+$\frac{1}{5}$) berbeda artinya dari "1 banding 5 menjawab ya" (rasio, jadi $\frac{1}{6}$ dari
+keseluruhan).
+
+## Risiko relatif perlu angka dasar
+
+"Ini melipatgandakan risikomu" tidak bisa ditafsirkan sendirian. Melipatgandakan risiko 1 banding
+2.000.000 menghasilkan 1 banding 1.000.000 — tetap tidak berarti apa-apa. Melipatgandakan risiko 1
+banding 20 sangat berarti.
+
+$$
+\text{perubahan mutlak} = \text{angka dasar} \times (\text{perubahan relatif} - 1)
+$$
+
+Selalu cari angka dasarnya. Kalau tidak diberikan, klaim itu sebenarnya belum memberi tahu apa pun.
+
+<Quiz
+  question="Sebuah toko menaikkan harga 20%, lalu memasang 'diskon 20%'. Berapa harga akhirnya dibanding harga semula?"
+  choices={[
+    { text: "4% lebih tinggi dari harga semula.", correct: true, explanation: "1,20 × 0,80 = 0,96 dari harga yang sudah dinaikkan, dan 0,96 × 1,20 = 1,04 dari harga semula — naik 4%." },
+    { text: "Persis sama dengan harga semula.", explanation: "Kedua persentase diambil dari keseluruhan yang berbeda, jadi tidak saling meniadakan." },
+    { text: "4% lebih rendah dari harga semula.", explanation: "Besarnya benar, arahnya keliru — kenaikan dikenakan pada angka yang lebih kecil lebih dulu." },
+  ]}
+/>
+
+<Quiz
+  question="Sebuah laporan menulis pengangguran 'turun 15 persen, dari 6,0% ke 5,1%'. Pernyataan mana yang benar?"
+  multiple
+  choices={[
+    { text: "Penurunannya 0,9 poin persentase.", correct: true, explanation: "6,0 − 5,1 = 0,9, dan satuan selisih antar-persentase adalah poin persentase." },
+    { text: "Penurunannya 15 persen secara relatif.", correct: true, explanation: "0,9 ÷ 6,0 = 0,15, jadi penurunan relatifnya memang 15%." },
+    { text: "Pengangguran turun 15 poin persentase.", explanation: "Itu akan membawanya dari 6,0% ke −9%, yang mustahil." },
+  ]}
+/>
+
+## Lanjut ke mana
+
+Persentase adalah pintu masuk untuk bisa membaca statistika sama sekali. Modul statistika melanjutkan
+dengan meringkas seluruh kumpulan data, bukan satu bagian saja.

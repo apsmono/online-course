@@ -1,0 +1,126 @@
+---
+title: Percentages and proportions
+summary: Percentages are the most-used and most-abused piece of arithmetic in public life. Here is how to compute them and how to read them sceptically.
+level: basic
+tags: ["mathematics", "arithmetic", "data-literacy"]
+primaryModule: mathematics
+updated: "2026-08-20"
+---
+
+A percentage is a fraction with the denominator fixed at 100. That is the whole definition. Almost
+every mistake people make with percentages comes from losing track of *what the denominator was*.
+
+## The one formula
+
+$$
+\text{percentage} = \frac{\text{part}}{\text{whole}} \times 100\%
+$$
+
+If 37 of 200 survey respondents said yes, that is $\frac{37}{200} \times 100\% = 18.5\%$.
+
+Rearranged, the same relationship answers the other two questions you will ever ask:
+
+| You know | You want | Compute |
+| --- | --- | --- |
+| part, whole | percentage | $\dfrac{\text{part}}{\text{whole}} \times 100$ |
+| percentage, whole | part | $\dfrac{\text{percentage}}{100} \times \text{whole}$ |
+| part, percentage | whole | $\dfrac{\text{part}}{\text{percentage}} \times 100$ |
+
+<Callout type="tip" title="Percent means per hundred">
+Reading "%" out loud as "per hundred" makes most problems solve themselves. "18.5 per hundred
+respondents" tells you immediately what the denominator is.
+</Callout>
+
+## Percentage change
+
+Change is measured against the **starting** value:
+
+$$
+\text{percentage change} = \frac{\text{new} - \text{old}}{\text{old}} \times 100\%
+$$
+
+A price going from 80,000 to 92,000 is
+
+$$
+\frac{92{,}000 - 80{,}000}{80{,}000} \times 100\% = 15\%
+$$
+
+### Increases and decreases are not symmetric
+
+This trips up almost everyone. Go up 50%, then down 50%, and you do **not** end up where you
+started:
+
+$$
+100 \xrightarrow{\;+50\%\;} 150 \xrightarrow{\;-50\%\;} 75
+$$
+
+The reason is that the second percentage is taken of a different whole. To undo a $p\%$ increase you
+need a decrease of $\frac{p}{100+p} \times 100\%$ — to undo $+50\%$ you need $-33.3\%$.
+
+<Callout type="warning" title="A 100% decrease is the end of the road">
+Something can increase by 300%, but it can never decrease by more than 100% — that would take it
+below nothing. If you see "costs fell by 150%", the writer has made an error.
+</Callout>
+
+## Percent versus percentage point
+
+This is the distinction that most often turns a true number into a misleading headline.
+
+If support for a policy moves from 40% to 44%:
+
+- It rose **4 percentage points** — the arithmetic difference.
+- It rose **10 percent** — the relative change, $\frac{44-40}{40} \times 100\% = 10\%$.
+
+Both are true. A press release that wants the number to sound big will report the second; one that
+wants it to sound small will report the first.
+
+<Callout type="note" title="How to spot it">
+Whenever a percentage changes *to* another percentage, ask which of the two is being quoted. If the
+article does not say, it is usually the flattering one.
+</Callout>
+
+## Proportions and ratios
+
+A **proportion** is the same idea without the ×100: $\frac{37}{200} = 0.185$. Statistics generally
+prefers proportions because they combine cleanly under multiplication.
+
+A **ratio** compares two parts to each other rather than a part to a whole. Of 200 people, 37 said
+yes and 163 said no — the ratio is $37 : 163$, roughly $1 : 4.4$.
+
+Mixing these up produces a specific, common error: "1 in 5 said yes" (proportion, $\frac{1}{5}$)
+means something different from "1 to 5 said yes" (ratio, so $\frac{1}{6}$ of the whole).
+
+## Relative risk needs a base rate
+
+"This doubles your risk" is uninterpretable on its own. Doubling a risk of 1 in 2,000,000 gives 1 in
+1,000,000 — still nothing. Doubling a risk of 1 in 20 matters a great deal.
+
+$$
+\text{absolute change} = \text{base rate} \times (\text{relative change} - 1)
+$$
+
+Always look for the base rate. If it is not given, the claim has not actually told you anything.
+
+<Quiz
+  question="A shop raises a price by 20%, then advertises '20% off'. What is the final price relative to the original?"
+  choices={[
+    { text: "4% higher than the original.", correct: true, explanation: "1.20 × 0.80 = 0.96 of the raised price, but 0.96 × 1.20 = 1.04 of the original — a 4% increase." },
+    { text: "Exactly the original price.", explanation: "The two percentages are taken of different wholes, so they do not cancel." },
+    { text: "4% lower than the original.", explanation: "Right size, wrong direction — the increase is applied to the smaller number first." },
+  ]}
+/>
+
+<Quiz
+  question="A report says unemployment 'fell 15 percent, from 6.0% to 5.1%'. Which statements are correct?"
+  multiple
+  choices={[
+    { text: "The fall was 0.9 percentage points.", correct: true, explanation: "6.0 − 5.1 = 0.9, and the unit for a difference between percentages is percentage points." },
+    { text: "The fall was 15 percent in relative terms.", correct: true, explanation: "0.9 ÷ 6.0 = 0.15, so the relative fall really is 15%." },
+    { text: "Unemployment fell by 15 percentage points.", explanation: "That would take it from 6.0% to −9%, which is impossible." },
+  ]}
+/>
+
+## Where to go next
+
+Percentages are the entry point to reading statistics at all. The statistics module continues with
+summarising a whole dataset rather than a single share.

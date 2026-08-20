@@ -16,10 +16,9 @@ type Dict = {
   tagline: string;
   heroTitle: string;
   heroBody: string;
-  browseTracks: string;
   startLearning: string;
-  allTracks: string;
-  tracks: string;
+  allModules: string;
+  modules: string;
   topics: string;
   search: string;
   searchPlaceholder: string;
@@ -34,7 +33,11 @@ type Dict = {
   previous: string;
   next: string;
   updated: string;
-  backToTrack: string;
+  partOf: string;
+  alsoIn: string;
+  browseTopics: string;
+  planned: string;
+  plannedNote: string;
   quizCheck: string;
   quizRetry: string;
   quizCorrect: string;
@@ -58,10 +61,9 @@ export const dictionaries: Record<Locale, Dict> = {
     heroTitle: "Belajar hal baru, satu pelajaran setiap kali.",
     heroBody:
       "Materi terbuka dari dasar sampai lanjutan, ditulis ringkas dan bisa langsung dipraktikkan. Tanpa akun, tanpa biaya.",
-    browseTracks: "Lihat semua jalur",
     startLearning: "Mulai belajar",
-    allTracks: "Semua jalur belajar",
-    tracks: "Jalur",
+    allModules: "Semua modul",
+    modules: "Modul",
     topics: "Topik",
     search: "Cari",
     searchPlaceholder: "Cari pelajaran, topik, atau kata kunci...",
@@ -76,7 +78,11 @@ export const dictionaries: Record<Locale, Dict> = {
     previous: "Sebelumnya",
     next: "Selanjutnya",
     updated: "Diperbarui",
-    backToTrack: "Kembali ke jalur",
+    partOf: "Bagian dari",
+    alsoIn: "Juga ada di",
+    browseTopics: "Jelajahi topik",
+    planned: "Direncanakan",
+    plannedNote: "Materi berikut sedang disiapkan.",
     quizCheck: "Periksa jawaban",
     quizRetry: "Coba lagi",
     quizCorrect: "Benar",
@@ -95,10 +101,9 @@ export const dictionaries: Record<Locale, Dict> = {
     heroTitle: "Learn something new, one lesson at a time.",
     heroBody:
       "Open material from the basics through to advanced topics, written to be short and immediately useful. No account, no cost.",
-    browseTracks: "Browse all tracks",
     startLearning: "Start learning",
-    allTracks: "All learning tracks",
-    tracks: "Tracks",
+    allModules: "All modules",
+    modules: "Modules",
     topics: "Topics",
     search: "Search",
     searchPlaceholder: "Search lessons, topics, or keywords...",
@@ -113,7 +118,11 @@ export const dictionaries: Record<Locale, Dict> = {
     previous: "Previous",
     next: "Next",
     updated: "Updated",
-    backToTrack: "Back to track",
+    partOf: "Part of",
+    alsoIn: "Also in",
+    browseTopics: "Browse topics",
+    planned: "Planned",
+    plannedNote: "These lessons are being written.",
     quizCheck: "Check answer",
     quizRetry: "Try again",
     quizCorrect: "Correct",

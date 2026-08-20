@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getAllLessons, getTags, getTracks, tagSlug } from "@/lib/content";
+import { getAllLessons, getModules, getTags } from "@/lib/content";
 import { locales } from "@/lib/i18n";
 import { absoluteUrl } from "@/lib/site";
 
@@ -13,9 +13,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       { url: absoluteUrl(`/${locale}/topics`), changeFrequency: "monthly", priority: 0.5 },
     );
 
-    for (const track of getTracks(locale)) {
+    for (const entry of getModules(locale)) {
       entries.push({
-        url: absoluteUrl(`/${locale}/learn/${track.slug}`),
+        url: absoluteUrl(`/${locale}/learn/${entry.slug}`),
         changeFrequency: "weekly",
         priority: 0.8,
       });
@@ -30,9 +30,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     }
 
-    for (const { tag } of getTags(locale)) {
+    for (const { key } of getTags(locale)) {
       entries.push({
-        url: absoluteUrl(`/${locale}/topics/${tagSlug(tag)}`),
+        url: absoluteUrl(`/${locale}/topics/${key}`),
         changeFrequency: "monthly",
         priority: 0.4,
       });

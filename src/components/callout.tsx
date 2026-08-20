@@ -28,7 +28,7 @@ export function Callout({ type = "note", title, children }: CalloutProps) {
           {title}
         </p>
       ) : null}
-      <div className="[&>*:first-child]:mt-0 [&>*:last-child]:mb-0">{children}</div>
+      <div className="callout-body">{children}</div>
     </aside>
   );
 }

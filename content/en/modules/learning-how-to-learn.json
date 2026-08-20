@@ -2,5 +2,9 @@
   "title": "Learning How to Learn",
   "description": "Evidence-based study techniques that hold up outside the classroom: spacing, retrieval, and deliberate practice.",
   "level": "intermediate",
-  "order": 2
+  "order": 2,
+  "lessons": [
+    "spaced-repetition",
+    "deliberate-practice"
+  ]
 }

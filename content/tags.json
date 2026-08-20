@@ -1,0 +1,44 @@
+{
+  "$comment": "Canonical tag registry. Lesson frontmatter uses the KEY; the site shows the per-locale label. Keys are also the URL segment at /<locale>/topics/<key>, so they must be lowercase kebab-case and must never change once published. Run `npm run check:content` after editing.",
+  "tags": {
+    "web": { "group": "web", "id": "Web", "en": "Web" },
+    "http": { "group": "web", "id": "HTTP", "en": "HTTP" },
+    "networking": { "group": "web", "id": "Jaringan", "en": "Networking" },
+    "html": { "group": "web", "id": "HTML", "en": "HTML" },
+    "css": { "group": "web", "id": "CSS", "en": "CSS" },
+    "layout": { "group": "web", "id": "Tata Letak", "en": "Layout" },
+    "accessibility": { "group": "web", "id": "Aksesibilitas", "en": "Accessibility" },
+
+    "learning": { "group": "learning", "id": "Belajar", "en": "Learning" },
+    "memory": { "group": "learning", "id": "Memori", "en": "Memory" },
+    "study-skills": { "group": "learning", "id": "Metode Belajar", "en": "Study Skills" },
+    "practice": { "group": "learning", "id": "Latihan", "en": "Practice" },
+    "feedback": { "group": "learning", "id": "Umpan Balik", "en": "Feedback" },
+
+    "mathematics": { "group": "mathematics", "id": "Matematika", "en": "Mathematics" },
+    "arithmetic": { "group": "mathematics", "id": "Aritmetika", "en": "Arithmetic" },
+    "algebra": { "group": "mathematics", "id": "Aljabar", "en": "Algebra" },
+    "functions": { "group": "mathematics", "id": "Fungsi", "en": "Functions" },
+    "geometry": { "group": "mathematics", "id": "Geometri", "en": "Geometry" },
+    "calculus": { "group": "mathematics", "id": "Kalkulus", "en": "Calculus" },
+    "linear-algebra": { "group": "mathematics", "id": "Aljabar Linear", "en": "Linear Algebra" },
+    "proof": { "group": "mathematics", "id": "Pembuktian", "en": "Proof" },
+
+    "statistics": { "group": "statistics", "id": "Statistika", "en": "Statistics" },
+    "descriptive-statistics": { "group": "statistics", "id": "Statistika Deskriptif", "en": "Descriptive Statistics" },
+    "probability": { "group": "statistics", "id": "Peluang", "en": "Probability" },
+    "distributions": { "group": "statistics", "id": "Distribusi", "en": "Distributions" },
+    "sampling": { "group": "statistics", "id": "Pengambilan Sampel", "en": "Sampling" },
+    "inference": { "group": "statistics", "id": "Inferensi", "en": "Inference" },
+    "hypothesis-testing": { "group": "statistics", "id": "Uji Hipotesis", "en": "Hypothesis Testing" },
+    "regression": { "group": "statistics", "id": "Regresi", "en": "Regression" },
+    "data-visualisation": { "group": "statistics", "id": "Visualisasi Data", "en": "Data Visualisation" },
+    "data-literacy": { "group": "statistics", "id": "Melek Data", "en": "Data Literacy" }
+  },
+  "groups": {
+    "web": { "id": "Web", "en": "Web" },
+    "learning": { "id": "Belajar", "en": "Learning" },
+    "mathematics": { "id": "Matematika", "en": "Mathematics" },
+    "statistics": { "id": "Statistika", "en": "Statistics" }
+  }
+}

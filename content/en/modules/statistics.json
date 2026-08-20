@@ -1,0 +1,57 @@
+{
+  "title": "Statistics",
+  "description": "How to summarise data honestly, reason about uncertainty, and recognise when a number in the news is not saying what it appears to say.",
+  "level": "intermediate",
+  "order": 4,
+  "lessons": [
+    "describing-data",
+    "percentages-and-proportions"
+  ],
+  "plannedLessons": [
+    {
+      "slug": "what-statistics-is-for",
+      "title": "What statistics is actually for",
+      "level": "basic"
+    },
+    {
+      "slug": "charts-that-do-not-lie",
+      "title": "Charts that do not lie",
+      "level": "basic"
+    },
+    {
+      "slug": "probability-basics",
+      "title": "Probability from first principles",
+      "level": "intermediate"
+    },
+    {
+      "slug": "distributions",
+      "title": "Distributions and the normal curve",
+      "level": "intermediate"
+    },
+    {
+      "slug": "sampling-and-uncertainty",
+      "title": "Sampling, error bars, and confidence intervals",
+      "level": "intermediate"
+    },
+    {
+      "slug": "correlation-and-causation",
+      "title": "Correlation, causation, and confounders",
+      "level": "intermediate"
+    },
+    {
+      "slug": "hypothesis-testing",
+      "title": "Hypothesis testing and what a p-value is not",
+      "level": "advanced"
+    },
+    {
+      "slug": "regression",
+      "title": "Regression as a model of a relationship",
+      "level": "advanced"
+    },
+    {
+      "slug": "bayesian-thinking",
+      "title": "Bayesian thinking and updating on evidence",
+      "level": "advanced"
+    }
+  ]
+}

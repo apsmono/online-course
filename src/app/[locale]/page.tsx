@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LevelBadge } from "@/components/level-badge";
-import { getAllLessons, getLessons, getTracks } from "@/lib/content";
+import { getAllLessons, getModuleLessons, getModules } from "@/lib/content";
 import { isLocale, t } from "@/lib/i18n";
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
@@ -9,7 +9,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   if (!isLocale(locale)) notFound();
 
   const copy = t(locale);
-  const tracks = getTracks(locale);
+  const modules = getModules(locale);
   const lessonCount = getAllLessons(locale).length;
 
   return (
@@ -37,37 +37,48 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             {copy.search}
           </Link>
           <span className="text-sm" style={{ color: "var(--fg-muted)" }}>
-            {tracks.length} {copy.tracks.toLowerCase()} · {lessonCount} {copy.lessons}
+            {modules.length} {copy.modules.toLowerCase()} · {lessonCount} {copy.lessons}
           </span>
         </div>
       </section>
 
       <section className="pb-16">
-        <h2 className="mb-6 text-sm font-semibold uppercase tracking-wide" style={{ color: "var(--fg-muted)" }}>
-          {copy.allTracks}
+        <h2
+          className="mb-6 text-sm font-semibold uppercase tracking-wide"
+          style={{ color: "var(--fg-muted)" }}
+        >
+          {copy.allModules}
         </h2>
 
-        {tracks.length === 0 ? (
+        {modules.length === 0 ? (
           <p style={{ color: "var(--fg-muted)" }}>{copy.noLessonsYet}</p>
         ) : (
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {tracks.map((track) => {
-              const count = getLessons(locale, track.slug).length;
+            {modules.map((entry) => {
+              const count = getModuleLessons(locale, entry.slug).length;
               return (
-                <li key={track.slug}>
+                <li key={entry.slug}>
                   <Link
-                    href={`/${locale}/learn/${track.slug}`}
+                    href={`/${locale}/learn/${entry.slug}`}
                     className="group flex h-full flex-col rounded-xl border p-5 transition-colors"
                     style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}
                   >
                     <span className="flex items-center gap-2">
-                      <span className="text-lg font-semibold group-hover:underline">{track.title}</span>
-                      <LevelBadge level={track.level} locale={locale} />
+                      <span className="text-lg font-semibold group-hover:underline">
+                        {entry.title}
+                      </span>
+                      <LevelBadge level={entry.level} locale={locale} />
                     </span>
-                    <span className="mt-2 flex-1 text-sm leading-relaxed" style={{ color: "var(--fg-muted)" }}>
-                      {track.description}
+                    <span
+                      className="mt-2 flex-1 text-sm leading-relaxed"
+                      style={{ color: "var(--fg-muted)" }}
+                    >
+                      {entry.description}
                     </span>
-                    <span className="mt-4 text-xs font-medium" style={{ color: "var(--fg-muted)" }}>
+                    <span
+                      className="mt-4 text-xs font-medium"
+                      style={{ color: "var(--fg-muted)" }}
+                    >
                       {count} {copy.lessons}
                     </span>
                   </Link>

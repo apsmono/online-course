@@ -1,0 +1,19 @@
+{
+  "title": "Matematika",
+  "description": "Matematika sekolah yang disusun ulang untuk orang dewasa yang ingin benar-benar memakainya: aritmetika yang bisa dipercaya, aljabar yang menjelaskan dirinya sendiri, dan gagasan di balik keduanya.",
+  "level": "basic",
+  "order": 3,
+  "lessons": ["percentages-and-proportions"],
+  "plannedLessons": [
+    { "slug": "order-of-operations", "title": "Urutan operasi dan kenapa itu cuma kesepakatan", "level": "basic" },
+    { "slug": "fractions-and-decimals", "title": "Pecahan, desimal, dan cara berpindah di antaranya", "level": "basic" },
+    { "slug": "algebra-basics", "title": "Variabel dan menyelesaikan persamaan pertamamu", "level": "basic" },
+    { "slug": "linear-equations", "title": "Garis, kemiringan, dan sistem persamaan", "level": "intermediate" },
+    { "slug": "functions-and-graphs", "title": "Fungsi dan cara membaca grafik", "level": "intermediate" },
+    { "slug": "exponents-and-logarithms", "title": "Eksponen, logaritma, dan pertumbuhan", "level": "intermediate" },
+    { "slug": "sequences-and-series", "title": "Barisan, deret, dan bunga majemuk", "level": "intermediate" },
+    { "slug": "introduction-to-proof", "title": "Apa itu pembuktian dan cara membacanya", "level": "advanced" },
+    { "slug": "limits-and-derivatives", "title": "Limit dan turunan tanpa basa-basi", "level": "advanced" },
+    { "slug": "matrices-and-vectors", "title": "Matriks dan vektor sebagai bahasa untuk data", "level": "advanced" }
+  ]
+}

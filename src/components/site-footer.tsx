@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { type Locale, t } from "@/lib/i18n";
+import { RELEASE_LABEL } from "@/lib/version";
 
 export function SiteFooter({ locale }: { locale: Locale }) {
   const copy = t(locale);
@@ -13,12 +14,13 @@ export function SiteFooter({ locale }: { locale: Locale }) {
         <p>{copy.footerNote}</p>
         <div className="flex gap-5">
           <Link href={`/${locale}/learn`} className="hover:opacity-70">
-            {copy.tracks}
+            {copy.modules}
           </Link>
           <Link href={`/${locale}/topics`} className="hover:opacity-70">
             {copy.topics}
           </Link>
           <span>© {new Date().getFullYear()} apsmono</span>
+          <span title="Release stage — see docs/VERSIONING.md">{RELEASE_LABEL}</span>
         </div>
       </div>
     </footer>
