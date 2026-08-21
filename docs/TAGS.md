@@ -82,5 +82,5 @@ Do not apply either as a courtesy. A tag page that lists everything lists nothin
 
 Tags registered ahead of the lessons that will use them appear as a warning in
 `npm run check:content`. That is expected while the Mathematics and Statistics
-roadmaps are being written — see `docs/plans/mathematics-and-statistics.md`. An
+roadmaps are being written — see `docs/plans/archive/mathematics-and-statistics.md`. An
 *unexpected* name in that warning means a typo somewhere.
