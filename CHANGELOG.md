@@ -10,7 +10,11 @@ that makes it.
 
 ## [Unreleased]
 
-Nothing yet.
+### Security
+
+- Bumped `next` and `eslint-config-next` 16.3.1 → 16.3.6 (patch release) to close
+  the critical Next.js advisory for 16.0.0–16.3.2; `npm audit fix` also cleared
+  transitive `js-yaml` / `sharp` highs. `npm audit` now reports 0 vulnerabilities.
 
 ## [0.2.0] — 2026-08-20
 
